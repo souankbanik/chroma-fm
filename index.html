@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CHROMA FM — A visual radio station for colors that don't exist.</title>
+  <meta name="description" content="CHROMA FM. A visual radio station for colors that don't exist. Listen with your eyes." />
+  <meta name="theme-color" content="#F2FF3D" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='38' cy='40' r='30' fill='%23FF3B30'/><circle cx='62' cy='40' r='30' fill='%232E4CFF' style='mix-blend-mode:multiply'/><circle cx='50' cy='62' r='30' fill='%23F2FF3D' style='mix-blend-mode:multiply'/></svg>" />
+  <script type="module" crossorigin src="/chroma-fm/assets/index-BVtLtQsR.js"></script>
+  <link rel="stylesheet" crossorigin href="/chroma-fm/assets/index-CBlcuKpi.css">
+</head>
+<body>
+  <div class="grain paper" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"><div class="dot"></div><div class="lbl"></div></div>
+
+  <!-- ================= HUD ================= -->
+  <header class="hud mono" id="hud">
+    <div class="hud-left">
+      <a class="hud-logo" href="#" data-cursor="TUNE" data-action="top">CHROMA FM</a>
+      <span class="hud-ch"><span id="hud-ch">CH-00 — SEARCHING</span></span>
+    </div>
+    <div class="hud-center"><span class="odo" id="odo" aria-label="Frequency"></span><span>MHz</span></div>
+    <div class="hud-right">
+      <span class="live"><i></i>LIVE</span>
+      <button data-cursor="TUNE" data-action="index">INDEX</button>
+      <button data-cursor="PLAY" data-action="sound" id="sound-btn">SOUND OFF</button>
+    </div>
+  </header>
+  <div class="dial" id="dial" aria-hidden="true"><div class="dial-rule"></div><div class="dial-needle" id="needle"></div></div>
+
+  <!-- ================= 00 LOADER ================= -->
+  <div id="loader" data-tone="light">
+    <div class="ld-fill"></div>
+    <div class="ld-dial"><svg id="ld-svg" viewBox="-300 -300 600 600"></svg></div>
+    <div class="ld-center">
+      <div class="ld-word disp" id="ld-word">CHROMA</div>
+      <div class="ld-fm serif" id="ld-fm">FM</div>
+    </div>
+    <div class="at mono ld-tl" style="--c:0">VISUAL RADIO<br />TRANSMISSION TEST</div>
+    <div class="at mono ld-tl" style="--c:9">COLOURS THAT<br />DON'T EXIST</div>
+    <div class="at mono ld-list" style="--c:0" id="ld-list">
+      <div><span>SEARCHING...</span></div>
+      <div><span>048.2</span></div>
+      <div><span>071.8</span></div>
+      <div><span>092.4</span></div>
+      <div><span>099.7</span></div>
+      <div><span id="ld-last">100.0</span></div>
+    </div>
+    <div class="at-r mono ld-br" style="--c:0"><span id="ld-pct">000</span>%<br />CH-00</div>
+  </div>
+
+  <!-- ================= INDEX ================= -->
+  <nav id="index" aria-label="Index" data-tone="dark">
+    <button class="mono ix-close" data-cursor="TUNE" data-action="index">CLOSE ×</button>
+    <div class="mono" style="margin-bottom:2vh;opacity:.6">CHROMA FM — FREQUENCY INDEX — 16 CHANNELS</div>
+    <div id="ix-list"></div>
+  </nav>
+  <div id="credits" class="mono m10">
+    CHROMA FM — A FICTIONAL VISUAL RADIO STATION.<br />
+    TYPE: ARCHIVO BLACK / INTER TIGHT / INSTRUMENT SERIF / IBM PLEX MONO.<br />
+    PHOTOGRAPHY: UNSPLASH CONTRIBUTORS, DUOTONE-TREATED.<br />
+    BUILT WITH GSAP, LENIS &amp; THREE.JS.
+  </div>
+
+  <main id="main">
+    <!-- ================= 01 OPENING ================= -->
+    <section class="ch" id="c01">
+      <div class="stage s01" data-tone="light">
+        <div class="o-listen" id="o-listen"><div class="disp stretch top" data-fit="1.035" data-cap="0.56" data-split>LISTEN</div></div>
+        <p class="at ui o-with" style="--c:4" id="o-with">WITH YOUR</p>
+        <div class="at mono o-m1" style="--c:0" id="o-m1">00.0 MHZ<br />VISUAL TRANSMISSION<br />CHANNEL 00</div>
+        <div class="o-eyes" id="o-eyes"><div class="disp stretch" data-fit="0.6" data-cap="0.25" data-split>EYES.</div></div>
+        <div class="at mono o-m2" style="--c:0" id="o-m2">SCROLL TO TUNE ↓<br />EST. NEVER</div>
+        <div class="o-circle" id="o-circle"></div>
+      </div>
+    </section>
+
+    <!-- ================= 02 RED TAKEOVER + 03 CITRUS POSTER ================= -->
+    <section class="ch" id="c02">
+      <div class="stage s02" data-tone="light">
+        <div class="r-num" id="r-num"><div class="disp stretch" data-fit="0.97" data-cap="0.78" data-split>17.4</div></div>
+        <div class="cit-rule" id="cit-rule1" style="top:17vh"></div>
+        <div class="cit-rule" id="cit-rule2" style="top:79vh"></div>
+        <div class="cit-rule" id="cit-rule3" style="top:86vh"></div>
+        <div class="cit-layer" id="cit-base">
+          <div class="cit-col disp at-r" style="--c:0" data-col>17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4</div>
+          <div class="cit-word" data-cit><div class="disp stretch" data-fit="0.965" data-cap="0.3" data-split>CITRUS</div></div>
+        </div>
+        <div class="cit-layer cit-yellow" id="cit-yellow">
+          <div class="cit-col disp at-r" style="--c:0" data-col>17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4 17.4</div>
+          <div class="cit-word" data-cit><div class="disp stretch" data-fit="0.965" data-cap="0.3" data-split>CITRUS</div></div>
+        </div>
+        <div class="at mono" style="--c:0;top:11vh" id="r-m1">FREQUENCY<br />CITRUS</div>
+        <div class="at mono" style="--c:4;top:11vh" id="r-m2">017.4 MHZ<br />RED / YELLOW / CREAM</div>
+        <div class="at mono" style="--c:0;top:80.5vh" id="cit-m1">POSTER NO. 03<br />SCREENPRINT, 3 INKS</div>
+        <div class="at mono" style="--c:4;top:80.5vh" id="cit-m2">SOUR — BRIGHT — ACID<br />RECEPTION: CLEAR</div>
+        <div class="at mono" style="--c:8;top:80.5vh" id="cit-m3">LAT 17.4° / LON 00.0°<br />ZEST INDEX 99</div>
+      </div>
+    </section>
+
+    <!-- ================= 04 POSTER WALL ================= -->
+    <section class="ch" id="c04">
+      <div class="stage s04" data-tone="light">
+        <div class="at mono" style="--c:0;top:6.4vh" id="wall-m1">POSTER WALL — 05 TRANSMISSIONS</div>
+        <div class="at mono" style="--c:6;top:6.4vh" id="wall-m2">032.8 — 047.9 MHZ</div>
+        <div class="wall-track" id="wall-track">
+          <!-- P1 LOUD -->
+          <article class="poster p1" data-cursor="DRAG">
+            <div class="pm" style="left:-11vh;bottom:-9vh;width:46vh;height:46vh;border-radius:50%;background:var(--red)"></div>
+            <div class="pm halftone" style="left:-11vh;bottom:-9vh;width:46vh;height:46vh;border-radius:50%;color:var(--ink);opacity:.14"></div>
+            <div class="pm mono m10" style="left:3vh;top:3vh">CHROMA FM<br />POSTER 01</div>
+            <div class="pm mono m10" style="left:22vh;top:3vh">032.8 MHZ<br />+12 DB</div>
+            <div class="pm" style="left:3vh;right:3vh;top:9vh;height:1px;background:var(--ink)"></div>
+            <div class="pm" style="left:3vh;right:3vh;top:10.2vh;height:1px;background:var(--ink)"></div>
+            <div class="pm disp" style="right:1.4vh;top:2.4vh;font-size:23.5vh;writing-mode:vertical-rl;transform:rotate(180deg);line-height:.78">LOUD</div>
+            <div class="pm ui" style="left:3vh;top:14vh;font-size:2.6vh;width:26vh">Volume is a colour. Turn it all the way up.</div>
+            <div class="pm disp" style="left:3vh;top:24vh;font-size:13vh;color:var(--red)">01</div>
+          </article>
+          <!-- P2 MOVE -->
+          <article class="poster p2" data-cursor="DRAG">
+            <div class="pm disp" style="left:1.6vh;top:2vh;font-size:30.5vh;line-height:.76">MO<br />VE</div>
+            <div class="pm" style="left:0;right:0;top:52vh;height:2px;background:var(--red)"></div>
+            <div class="pm" style="right:4vh;top:47vh;width:10vh;height:10vh;border-radius:50%;background:var(--red)"></div>
+            <div class="pm ui" style="left:3vh;top:57vh;font-size:2.6vh;width:28vh">Signal travels at the speed of your scroll.</div>
+            <div class="pm mono m10" style="left:3vh;bottom:3vh">POSTER 02<br />036.1 MHZ</div>
+            <div class="pm mono m10" style="right:3vh;bottom:3vh;text-align:right">KINETIC<br />CHANNEL</div>
+          </article>
+          <!-- P3 TOUCH -->
+          <article class="poster p3" data-cursor="DRAG">
+            <div class="pm" style="left:0;top:0;right:0;bottom:0">
+              <div class="pm disp" style="left:50%;top:38vh;transform:translate(-50%,-50%);font-size:15.6vh">TOUCH</div>
+            </div>
+            <div class="pm" style="inset:0;clip-path:circle(25vh at 50% 38%);background:var(--ink);color:var(--cream)">
+              <div class="pm disp" style="left:50%;top:38vh;transform:translate(-50%,-50%);font-size:15.6vh">TOUCH</div>
+            </div>
+            <div class="pm mono m10" style="left:3vh;top:3vh">POSTER 03</div>
+            <div class="pm mono m10" style="right:3vh;top:3vh;text-align:right">040.5 MHZ</div>
+            <div class="pm" style="left:3vh;right:3vh;top:68vh;height:1px;background:var(--ink)"></div>
+            <div class="pm ui" style="left:3vh;top:69.5vh;font-size:2.4vh">Fingertip frequency.</div>
+            <div class="pm serif" style="right:3vh;top:67.8vh;font-size:5vh">hold to hear</div>
+          </article>
+          <!-- P4 FLOW -->
+          <article class="poster p4" data-cursor="DRAG">
+            <svg class="pm" style="right:-24vh;top:-14vh;width:80vh;height:80vh" viewBox="-100 -100 200 200" fill="none" stroke="#57E6FF" stroke-width=".5">
+              <circle r="98" /><circle r="84" /><circle r="70" /><circle r="56" /><circle r="42" /><circle r="28" /><circle r="14" fill="#57E6FF" />
+            </svg>
+            <div class="pm mono m10" style="left:3vh;top:3vh">POSTER 04 — 044.0 MHZ</div>
+            <div class="pm mono m10" style="left:36vh;top:3vh">CURRENT: STEADY<br />DRIFT: 0.4° / SEC</div>
+            <div class="pm" style="left:3vh;width:60vh;top:9vh;height:1px;background:var(--ink)"></div>
+            <div class="pm ui" style="left:3vh;top:11vh;font-size:2.6vh;width:30vh">Colour does not stop. It only changes channel.</div>
+            <div class="pm disp" style="left:1.8vh;bottom:1.4vh;font-size:39vh;line-height:.74;color:var(--cyan)">FLOW</div>
+          </article>
+          <!-- P5 LOOK -->
+          <article class="poster p5" data-cursor="DRAG">
+            <div class="pm" style="right:-6vh;top:-5vh;width:38vh;height:38vh;border-radius:50%;background:var(--cream)"></div>
+            <div class="pm disp" style="left:2vh;top:24vh;font-size:30vh;line-height:.76">LO<br />OK</div>
+            <div class="pm mono m10" style="left:3vh;top:3vh">POSTER 05<br />047.9 MHZ</div>
+            <div class="pm" style="left:3vh;width:14vh;top:10vh;height:2px;background:var(--blue)"></div>
+            <div class="pm ui" style="left:3vh;top:12vh;font-size:2.6vh;width:22vh">Eyes are the only receiver you need.</div>
+            <div class="pm mono m10" style="right:3vh;bottom:3vh">END OF WALL →</div>
+          </article>
+        </div>
+        <div class="wall-flood" id="wall-flood"></div>
+        <div class="at mono wall-meta-b" style="--c:0" id="wall-m3">SCREENPRINTED BROADCASTS</div>
+        <div class="at mono wall-meta-b" style="--c:6" id="wall-m4">KEEP SCROLLING TO TUNE →</div>
+      </div>
+    </section>
+
+    <!-- ================= 05 TYPE ATTACK ================= -->
+    <section class="ch" id="c05">
+      <div class="stage s05" data-tone="light">
+        <div class="ta" id="ta-loud"><div class="disp stretch" data-fit="0.96" data-cap="0.7" data-split style="transform-origin:50% 50%">LOUD</div></div>
+        <div class="ta serif ta-quiet" id="ta-quiet" data-split>quiet</div>
+        <div class="ta-speed" id="ta-speed1" style="top:44%"></div>
+        <div class="ta-speed" id="ta-speed2" style="top:50%"></div>
+        <div class="ta-speed" id="ta-speed3" style="top:56%"></div>
+        <div class="ta" id="ta-fast"><div class="disp" data-fit="0.5" data-split>FAST</div></div>
+        <div class="ta" id="ta-slow"><div class="disp stretch" data-fit="0.92" data-cap="0.5" data-split style="transform-origin:50% 50%">SLOW</div></div>
+        <div class="ta" id="ta-close"><div class="disp" data-fit="0.8" data-split>CLOSE</div></div>
+        <div class="ta" id="ta-far"><div class="disp" data-fit="0.9">FAR</div></div>
+        <div class="ta-dot" id="ta-dot"></div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9)" id="ta-m1">TYPE ATTACK<br /><span id="ta-label">05.1 — LOUD</span></div>
+        <div class="at mono" style="--c:9;bottom:calc(var(--m) * 1.9)" id="ta-m2">055.5 MHZ<br /><span id="ta-count">01 / 06</span></div>
+      </div>
+    </section>
+
+    <!-- ================= 06 HEAT ================= -->
+    <section class="ch" id="c06">
+      <div class="stage s06" data-tone="light">
+        <canvas class="heat-bg" id="heat-bg"></canvas>
+        <canvas class="heat-gl" id="heat-gl"></canvas>
+        <div class="at mono" style="--c:7;top:11vh;color:var(--cream)" id="heat-m1">HEAT — 061.0 MHZ<br />SURFACE: 5,800 K</div>
+        <div class="at mono" style="--c:10;top:11vh;color:var(--cream)" id="heat-m2">ONE SPHERE OF GLASS<br />REFRACTING THE BROADCAST</div>
+        <div class="heat-pink" id="heat-pink"></div>
+      </div>
+    </section>
+
+    <!-- ================= 07 BLOOM ================= -->
+    <section class="ch" id="c07">
+      <div class="stage s07" data-tone="light">
+        <div class="bloom-violet" id="bloom-violet"></div>
+        <svg class="bloom-svg" id="bloom-svg" viewBox="-500 -500 1000 1000"></svg>
+        <div class="bloom-word" id="bloom-word"><div class="disp" data-fit="0.5" data-split>BLOOM</div></div>
+        <div class="at mono" style="--c:0;top:11vh;" id="bl-m1">066.6 MHZ<br />RADIAL SYMBOL NO. 07</div>
+        <div class="at mono" style="--c:9;top:11vh;" id="bl-m2">8 PETALS<br />PINK / VIOLET / CREAM</div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9)" id="bl-m3">OPENS AT THE SPEED<br />OF ATTENTION</div>
+        <div class="at mono" style="--c:9;bottom:calc(var(--m) * 1.9)" id="bl-m4"><span id="bl-deg">000</span>° OPEN</div>
+      </div>
+    </section>
+
+    <!-- ================= 08 ULTRAVIOLET ================= -->
+    <section class="ch" id="c08">
+      <div class="stage s08" data-tone="dark">
+        <div class="uv-num" id="uv-num"><div class="disp outline stretch" data-fit="1.2" data-cap="0.9" style="transform-origin:50% 50%">73.6</div></div>
+        <svg class="uv-rings" id="uv-rings" viewBox="-100 -100 200 200" style="right:6vw;top:18vh"></svg>
+        <div class="at disp uv-you" style="--c:0" id="uv-you" data-split>YOU HAVE</div>
+        <div class="uv-never" id="uv-never"><div class="disp stretch" data-fit="1.3" data-cap="0.3" data-split style="transform-origin:0 50%">NEVER SEEN</div></div>
+        <div class="serif uv-this abs" id="uv-this" data-split>this colour.</div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9)" id="uv-m1">073.6 MHZ — ULTRAVIOLET<br />WAVELENGTH: 380 NM AND FALLING</div>
+        <div class="at mono" style="--c:6;top:13vh" id="uv-m2">VISIBLE TO: NOBODY<br />UNTIL NOW</div>
+        <!-- IMAGE 01 (chapter 09 opens inside this circle) -->
+        <div class="uv-reveal ed1" id="uv-reveal" data-tone="light">
+          <div class="duo" style="--hi:var(--yellow);--lo:var(--ink)"><img src="/chroma-fm/img/c1.jpg" alt="Model in a yellow tracksuit on a basketball court" id="ed1-img" style="object-position:50% 20%" /></div>
+          <div class="ed1-word" id="ed1-word"><div class="disp stretch" data-fit="1.02" data-cap="0.36" data-split>SEEN</div></div>
+          <div class="at mono ed-meta" style="--c:0;top:11vh" id="ed1-m1">IMG 01 / 06<br />077.7 MHZ</div>
+          <div class="at mono ed-meta" style="--c:9;top:11vh" id="ed1-m2">35MM — F/2.8 — 1/500<br />34.05° N 118.24° W</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 09 IMAGE EDITORIAL ================= -->
+    <section class="ch" id="c09">
+      <!-- IMAGE 02: thin vertical right -->
+      <div class="ed ed2" data-tone="light">
+        <div class="at disp" style="--c:0;top:16vh;font-size:19vw;line-height:.8" data-rise>TUNE</div>
+        <div class="at disp" style="--c:0;top:calc(16vh + 15.4vw);font-size:19vw;line-height:.8;color:var(--blue)" data-rise>IN.</div>
+        <div class="at serif" style="--c:5;top:calc(18vh + 17vw);font-size:clamp(40px,5.2vw,96px);width:36vw;line-height:.92">to the colour between colours</div>
+        <div class="at mono" style="--c:0;top:78vh">IMG 02 — THE THIN FREQUENCY<br />CROP: 1 : 5.4</div>
+        <div class="at mono" style="--c:5;top:78vh">TREATMENT: ULTRA BLUE<br />SINGLE INK, CREAM STOCK</div>
+        <div class="duo" style="--hi:var(--cream);--lo:var(--blue)"><img src="/chroma-fm/img/c2.jpg" alt="Model leaning against a teal wall" data-par="0.18" /></div>
+      </div>
+      <!-- IMAGE 03: landscape strip -->
+      <div class="ed ed3" data-tone="light">
+        <div class="at disp" style="--c:0;top:14vh;font-size:26vw;line-height:.78;z-index:2" data-slide="-1">NOISE</div>
+        <div class="duo" style="--hi:var(--cream);--lo:var(--ink)"><img src="/chroma-fm/img/c10.jpg" alt="Figure in a blue coat in front of a cathedral" data-par="0.2" style="object-position:50% 38%" /></div>
+        <div class="at disp" style="--c:4;top:62vh;font-size:26vw;line-height:.78;z-index:2" data-slide="1">FLOOR</div>
+        <div class="at mono" style="--c:0;top:88vh">IMG 03 — STRIP FORMAT<br />MILANO 45.46° N</div>
+        <div class="at mono" style="--c:8;top:88vh">STATIC IS A COLOUR<br />YOU HAVEN'T NAMED</div>
+      </div>
+      <!-- IMAGE 04: small image, giant type -->
+      <div class="ed ed4" data-tone="light">
+        <div class="at disp" style="--c:0;top:10vh;font-size:22vw;line-height:.8" data-slide="1">FACE</div>
+        <div class="duo" style="--hi:var(--cream);--lo:var(--violet);left:calc(var(--m) + (var(--col) + var(--g)) * 7);top:34vh"><img src="/chroma-fm/img/c4.jpg" alt="Portrait in violet light" data-par="0.1" /></div>
+        <div class="at disp" style="--c:0;top:44vh;font-size:12vw;line-height:.8">THE</div>
+        <div class="at disp" style="--c:0;top:70vh;font-size:22vw;line-height:.8" data-slide="-1">MUSIC</div>
+        <div class="at mono" style="--c:4;top:44vh">IMG 04<br />PORTRAIT, 1:1.4</div>
+        <div class="at mono" style="--c:10;top:34vh">SUBJECT LISTENS<br />WITH BOTH EYES</div>
+      </div>
+      <!-- IMAGE 05: full-height portrait -->
+      <div class="ed ed5" data-tone="dark">
+        <div class="duo" style="--hi:var(--orange);--lo:var(--ink)"><img src="/chroma-fm/img/c5.jpg" alt="Portrait of a man in a knit sweater" data-par="0.14" /></div>
+        <div class="at disp" style="--c:0;top:12vh;font-size:15.5vw;line-height:.8" data-rise>STA</div>
+        <div class="at disp" style="--c:0;top:calc(12vh + 12.6vw);font-size:15.5vw;line-height:.8" data-rise>TIC</div>
+        <div class="at serif" style="--c:0;top:62vh;font-size:clamp(40px,4.4vw,80px);color:var(--orange);width:40vw">is just a colour waiting to be tuned</div>
+        <div class="at mono" style="--c:0;top:86vh">IMG 05 — FULL HEIGHT<br />BLUE / ORANGE / CREAM</div>
+        <div class="at mono" style="--c:3;top:86vh">85MM — F/1.8<br />STUDIO B, 02:14 AM</div>
+      </div>
+      <!-- IMAGE 06: near fullscreen → collapses into a line -->
+      <section class="ch" id="c09b">
+        <div class="stage ed6" data-tone="dark">
+          <div class="duo" id="ed6-img" style="--hi:var(--cream);--lo:var(--ink)"><img src="/chroma-fm/img/c3.jpg" alt="Portrait in the dark" style="object-position:50% 25%" /></div>
+          <div class="at disp" style="--c:0;bottom:calc(var(--m) * 2.4);font-size:12vw;line-height:.8;color:var(--cream);z-index:3" id="ed6-word" data-split>HOLD STILL</div>
+          <div class="at mono" style="--c:0;top:calc(var(--m) * 2.6);z-index:3;color:var(--cream)" id="ed6-m1">IMG 06 / 06 — LAST FRAME</div>
+          <div class="at mono" style="--c:9;top:calc(var(--m) * 2.6);z-index:3;color:var(--red)" id="ed6-m2">● SIGNAL INCOMING</div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= 10 SIGNAL / 11 BANDS / 12 DISC ================= -->
+    <section class="ch" id="c10">
+      <div class="stage s10" data-tone="dark" id="s10">
+        <div class="sig-cream" id="sig-cream"></div>
+        <div class="sig-num" id="sig-num"><div class="disp outline stretch" data-fit="0.98" data-cap="0.82" style="transform-origin:50% 50%">81.3</div></div>
+        <div class="disc-chroma" id="disc-chroma"><div class="disp" data-fit="1.06" data-split>CHROMA</div></div>
+        <svg class="sig-svg" id="sig-svg"></svg>
+        <div class="at sig-can" style="--c:0" id="sig-can">
+          <div><span class="disp">CAN</span></div><div><span class="disp">YOU</span></div><div><span class="disp">SEE</span></div><div><span class="disp">ME?</span></div>
+        </div>
+        <div class="at mono sig-det" style="--c:9;top:11vh" id="sig-det">● SIGNAL DETECTED</div>
+        <div class="at mono" style="--c:9;top:calc(11vh + 3.2em)" id="sig-m1">081.3 MHZ<br />SNR <span id="sig-snr">00</span> DB<br /><span id="sig-tc">00:00:00</span></div>
+        <div class="more" id="more1"><div class="disp" data-fit="0.94" data-split>MORE</div></div>
+        <div class="more" id="more2"><div class="disp" data-fit="0.3" data-split>IS</div></div>
+        <div class="more" id="more3"><div class="disp" data-fit="0.94" data-split>MORE</div></div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9)" id="band-m1">088.8 MHZ — COLOUR BANDS<br />SIX INKS, NO GRADIENTS</div>
+        <div class="disc-wrap" id="disc-wrap" data-cursor="SPIN"><svg id="disc-svg" viewBox="-100 -100 200 200" class="disc-sweep"></svg></div>
+        <div class="disc-fm serif" id="disc-fm">fm</div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9)" id="disc-m1">094.2 MHZ — THE CHROMA DISC<br />DRAG TO SPIN</div>
+        <div class="at mono" style="--c:9;bottom:calc(var(--m) * 1.9)" id="disc-m2">SECTOR <span id="disc-sec">01</span> / 12<br /><span id="disc-name">ACID YELLOW</span></div>
+      </div>
+    </section>
+
+    <!-- ================= 13 OVERLOAD ================= -->
+    <section class="ch" id="c13">
+      <div class="stage s13" data-tone="light" id="s13">
+        <div class="ov-bg" id="ov-bg"></div>
+        <div class="ov ov-wipe full" id="ov-wipe" style="background:var(--yellow);clip-path:inset(0 100% 0 0)"></div>
+        <div class="ov ov-circle" id="ov-circle"></div>
+        <div class="ov full" id="ov-redfield" style="background:var(--red);clip-path:inset(50% 0 50% 0)"></div>
+        <div class="ov full" id="ov-ink" style="background:var(--ink);visibility:hidden"></div>
+        <div class="ov ov-img" id="ov-img"><div class="duo" id="ov-duo" style="--hi:var(--cyan);--lo:var(--blue)"><img src="/chroma-fm/img/c9.jpg" alt="" style="object-position:50% 30%" /></div></div>
+        <div class="ov" id="ov-word" style="left:50%;top:50%"><div class="disp stretch" data-fit="1" data-cap="0.62" data-split style="transform-origin:50% 50%">SIGNAL</div></div>
+        <svg class="ov" id="ov-wave" style="left:0;top:0;width:100%;height:100%;overflow:visible"></svg>
+        <div class="ov full" id="ov-pink" style="background:var(--pink);clip-path:circle(0px at 50% 50%)"></div>
+        <svg class="ov bloom-svg" id="ov-bloom" viewBox="-500 -500 1000 1000"></svg>
+        <div class="ov ov-poster" id="ov-poster">
+          <div class="abs disp" style="left:calc(var(--m) - .6vw);top:9vh;font-size:40vh;line-height:.76" id="ov-pnum">99.9</div>
+          <div class="abs" style="left:var(--m);right:var(--m);top:44vh;height:2px;background:var(--cream)"></div>
+          <div class="abs" style="left:var(--m);right:var(--m);top:46vh;height:1px;background:var(--cream)"></div>
+          <div class="abs" style="right:8vw;top:52vh;width:36vh;height:36vh;border-radius:50%;background:var(--red)"></div>
+          <div class="at ui" style="--c:0;top:50vh;font-size:clamp(22px,2.2vw,34px);width:34vw">Every frequency at once. Hold on to something.</div>
+          <div class="at mono" style="--c:0;top:84vh">OVERLOAD — POSTER 13</div>
+        </div>
+        <div class="ov full" id="ov-cream" style="background:var(--cream);clip-path:circle(0px at 50% 50%)"></div>
+        <div class="ov disc-wrap" id="ov-disc"><svg viewBox="-100 -100 200 200" id="ov-disc-svg"></svg></div>
+        <div class="at mono" style="--c:0;bottom:calc(var(--m) * 1.9);z-index:5" id="ov-m1">099.9 MHZ — OVERLOAD</div>
+        <div class="at mono" style="--c:9;bottom:calc(var(--m) * 1.9);z-index:5" id="ov-m2">SEQUENCE <span id="ov-seq">01</span> / 07</div>
+      </div>
+    </section>
+
+    <!-- ================= 14 PERFECT SIGNAL / 15 END ================= -->
+    <section class="ch" id="c14">
+      <div class="stage s14" data-tone="light">
+        <div class="ps-serif serif" id="ps-serif" data-split>You found it.</div>
+        <div class="ps-disc" id="ps-disc"><svg viewBox="-100 -100 200 200" id="ps-disc-svg" style="width:100%;height:100%;overflow:visible"></svg></div>
+        <div class="ps-copy disp" id="ps-copy"><div><span class="blk">A COLOUR</span></div><div><span class="blk">THAT DOESN'T</span></div><div><span class="blk">EXIST.</span></div></div>
+        <div class="mono ps-freq abs" id="ps-freq">100.0 MHZ — PERFECT SIGNAL</div>
+        <div class="end-num" id="end-num"><div class="disp" data-fit="0.94" data-split>100.0</div></div>
+        <div class="end-circ" id="end-c1" style="background:var(--red)"></div>
+        <div class="end-circ" id="end-c2" style="background:var(--blue)"></div>
+        <div class="end-circ" id="end-c3" style="background:var(--yellow)"></div>
+        <div class="end-title disp" id="end-title" data-split>CHROMA FM</div>
+        <div class="at ui end-tag" style="--c:0" id="end-tag">TUNE INTO<br />SOMETHING<br />YOU'VE NEVER SEEN.</div>
+        <div class="at mono" style="--c:9;top:81vh" id="end-meta">100.0 MHZ<br />END OF TRANSMISSION</div>
+        <div class="at mono end-links" style="--c:0" id="end-links">
+          <button data-cursor="TUNE" data-action="replay">REPLAY</button>
+          <button data-cursor="TUNE" data-action="index">INDEX</button>
+          <button data-cursor="PLAY" data-action="sound">SOUND</button>
+          <button data-cursor="TUNE" data-action="credits">CREDITS</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
