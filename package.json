@@ -1,0 +1,25 @@
+{
+  "name": "chroma-fm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CHROMA FM — A visual radio station for colors that don't exist.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173"
+  },
+  "dependencies": {
+    "@fontsource/archivo-black": "5.1.0",
+    "@fontsource/ibm-plex-mono": "5.1.0",
+    "@fontsource/instrument-serif": "5.1.0",
+    "@fontsource/inter-tight": "5.1.0",
+    "gsap": "3.12.5",
+    "lenis": "1.1.14",
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.48.2",
+    "vite": "5.4.10"
+  }
+}
